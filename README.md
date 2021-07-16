@@ -15,3 +15,6 @@
     C. origin and destination must be 2 character country codes
  
     D. check in and expected arrival dates must be 8 characters any human readable order
+    
+    
+#v0.2 exact same functionality. recoded for efficiency and ease of use.
