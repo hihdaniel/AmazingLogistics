@@ -20,3 +20,5 @@
 #v0.2 exact same functionality. recoded for efficiency and ease of use.
 
 #v0.3 has google api access to a spreadsheet which would contain product/shipping info.
+
+#v0.4 pulls data from a hosted spreadsheet.
