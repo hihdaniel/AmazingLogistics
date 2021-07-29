@@ -5,7 +5,6 @@ Created on Thu Jul 15 00:20:08 2021
 
 @author: dan
 """
-#google boilerplate
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -13,14 +12,20 @@ scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_name('spreadsheet1-320520-59ecaf623ee9.json', scope)
 client =  gspread.authorize(creds)
 
-#test of sheet reading
-#sheet = client.open('products')
+sheet = client.open('delivery_products')
 
-#product = sheet.values_get('basic')
-#print(product)
+product = sheet.values_get('basic')
+print(product)
 
 #input product info
 product_info = ["item_256732_desc_boxcut_origin_AU_checkin_12232021_destination_US_exparrival_01232022","item_546563_desc_pillow_origin_PH_checkin_07152021_destination_US_exparrival_08162021","item_587141_desc_dumbel_origin_RU_checkin_05052021_destination_US_exparrival_08162021"]
+product_info_web_names = [sheet.values_get('F2:F9')]
+product_info_web_id_number = [sheet.values_get('A2:A9')]
+product_info_web_origin = [sheet.values_get('B2:B9')]
+product_info_web_checkin_date = [sheet.values_get('C2:C9')]
+product_info_web_destination = [sheet.values_get('D2:D9')]
+product_info_web_expected_arrival_date = [sheet.values_get('E2:E9')]
+#print(product_info_web_checkin_date)
 #converts product_list items into an int
 product_list_item_count = len(product_info)
 #first check working correctly
