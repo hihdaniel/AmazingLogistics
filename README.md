@@ -22,3 +22,5 @@
 #v0.3 has google api access to a spreadsheet which would contain product/shipping info.
 
 #v0.4 pulls data from a hosted spreadsheet.
+
+#v0.5 has front-end skeleton code
