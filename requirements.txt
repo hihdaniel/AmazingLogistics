@@ -5,4 +5,4 @@ Created on Mon Jul 26 23:45:24 2021
 @author: dan
 """
 
-Flask==1.1.2
+kivy[full] 2.0.0
