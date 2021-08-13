@@ -24,3 +24,5 @@
 #v0.4 pulls data from a hosted spreadsheet.
 
 #v0.5 has front-end skeleton code
+
+#0.6 gui displays data from product list sheet
