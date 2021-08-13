@@ -12,15 +12,34 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
 from kivy.config import Config
+import os
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+from time import time
 
 
 
 
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+creds = ServiceAccountCredentials.from_json_keyfile_name ("tracking-app\client_secret.json", scope)
+client =  gspread.authorize(creds)
+sheet = client.open('delivery_products')
+product = sheet.values_get('basic')
+
+product_info_web_names = [sheet.values_get('F2:F9')]
+product_info_web_names_converter = str(product_info_web_names)
+print (product_info_web_names_converter[2])
+"""
+product_info_web_id_number = [sheet.values_get('A2:A9')]
+product_info_web_origin = [sheet.values_get('B2:B9')]
+product_info_web_checkin_date = [sheet.values_get('C2:C9')]
+product_info_web_destination = [sheet.values_get('D2:D9')]
+product_info_web_expected_arrival_date = [sheet.values_get('E2:E9')]
 
 manual_search_input_storage=str()
 three_most_recent_check_in_products = ["abc123xyz","bar444rab","clp678plc"]
 product_shortcode = three_most_recent_check_in_products[0]
-spinner = Spinner(text = "Show Recent",values = three_most_recent_check_in_products, size_hint =(None,None),size = ("100dp","50dp"))#, id = "bottom_left_button")
+spinner = Spinner(text = "Show Recent",values = product_info_web_names_converter, size_hint =(None,None),size = ("100dp","50dp"))#, id = "bottom_left_button")
 Macro_Box_Layout = BoxLayout(orientation = "vertical")
 Sub_Layout_V_1 = BoxLayout(orientation = "vertical")
 Sub_Layout_H_1 = BoxLayout(orientation = "horizontal")
@@ -52,6 +71,7 @@ class BoxLayoutApp(App):
         Macro_Box_Layout.add_widget(Sub_Layout_V_1)
         Macro_Box_Layout.add_widget(Sub_Layout_V_2)
         return Macro_Box_Layout
+    # how to print to labels: def variable of what you want to print, 2 args (self,text), tab in to label name with 2 args (self,text) again. this combo instantly prints to label. if typing it will print letter by letter. 
     def product_shortcode_printer_to_the_bottom_label(self, text):
         btn7.text = (self.text)
     spinner.bind(text=product_shortcode_printer_to_the_bottom_label)
@@ -65,3 +85,4 @@ root = BoxLayoutApp()
 
 
 root.run()
+"""
